@@ -1,7 +1,7 @@
 #!/bin/bash
 terraform apply -auto-approve
 
-sleep 30
+sleep 20
 
 while true; do
   public_ip=$(terraform show | grep -E 'public_ip[ ]*=' | awk -F'=' '{print $2}' | tr -d ' "')
@@ -10,7 +10,7 @@ while true; do
     break
   fi
   echo "Waiting for EC2 be ready..."
-  sleep 60
+  sleep 20
 done
 
 echo "Login in EC2"
